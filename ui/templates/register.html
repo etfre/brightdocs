@@ -1,0 +1,12 @@
+{% extends "sign_in_base.html" %}
+{% load staticfiles %}
+
+{% block title %}Register for BrightDocs{% endblock %}
+{% block body_content %}
+<div class="container">
+  <form class="form-signin" action='submit/registration' method='post' role='form'>{% csrf_token %}
+  {{ form.as_p }}
+  <input type='submit' value='Complete Registration' />
+  </form>
+</div>
+{% endblock %}

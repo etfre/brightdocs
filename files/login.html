@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}Register for BrightDdocs{% endblock %}
+{% block body_content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-2">
+        <form action='submit/registration' class="form-signin" role="form">
+          <h2 class="form-signin-heading">Pleased sign in</h2>
+          <input type="email" class="form-control" placeholder="Email address" maxlength="10" required autofocus>
+          <input type="password" class="form-control" placeholder="Password" required>
+          <label class="checkbox">
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
