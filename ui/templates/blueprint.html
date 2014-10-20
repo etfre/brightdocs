@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}Create Blueprint{% endblock %}
+{% block body_content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <form action="/files/upload" method="post" enctype="multipart/form-data">{% csrf_token %}
+          <input type="file" name="myfile" />
+          <input type="submit" name="submit" value="Upload" />
+        </form>
+      </div>
+    </div>
+{% endblock %}
