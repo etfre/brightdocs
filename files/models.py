@@ -19,7 +19,17 @@ class Document(models.Model):
 	extension = models.CharField(max_length=5)
 	doc_file = models.FileField(upload_to=get_upload_file_name)
 
-class Rule(models.Model):
+class Trigger(models.Model):
 	blueprint = models.ForeignKey(Blueprint)
+	name = models.CharField(max_length=30)
+
+class Condition(models.Model):
+	trigger = models.ForeignKey(Trigger)
+
+class Action(models.Model):
+	trigger = models.ForeignKey(Trigger)
+
+class Variable(models.Model):
+	document = models.ForeignKey(Document)
 
 # Create your models here.
