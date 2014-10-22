@@ -1,6 +1,7 @@
 import os
 from django.db import models
 from django.contrib.auth.models import User
+from ui import utils
 
 def get_upload_file_name(instance, filename):
 	return os.path.join('{} - {}'.format(instance.blueprint.user_id,
@@ -21,7 +22,7 @@ class Document(models.Model):
 
 class Trigger(models.Model):
 	blueprint = models.ForeignKey(Blueprint)
-	name = models.CharField(max_length=30)
+	name = models.CharField(max_length=30, default='default name')
 
 class Condition(models.Model):
 	trigger = models.ForeignKey(Trigger)
@@ -32,4 +33,3 @@ class Action(models.Model):
 class Variable(models.Model):
 	document = models.ForeignKey(Document)
 
-# Create your models here.

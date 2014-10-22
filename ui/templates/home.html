@@ -3,23 +3,28 @@
 
 {% block title %}BrightDocs Home{% endblock %}
 {% block body_content %}
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 col-md-offset-8">
-          <h2><a href="new/blueprint">New Blueprint</a></h2>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-md-offset-8">
+        <h2><a href="new/blueprint">New Blueprint</a></h2>
       </div>
-      <div class="row">
-        <div class="col-md-4 col-md-offset-4">
-          <h1>Blueprints</h1>
-        </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <h1>Blueprints</h1>
       </div>
-      {% for blueprint in user.blueprint_set.all %}
-      <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <p>ASDAS</p>
-        </div>
-      </div>
-      {% endfor %}
-      </div>
+    </div>
+    {% for blueprint in user.blueprint_set.all %}
+      {% with pos=forloop.counter|stringformat:"s" %}
+        {% with blueprint_location="/blueprint/"|add:pos %}
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+              <a href={{ blueprint_location }}>{{ blueprint.name }}</a>
+            </div>
+          </div>
+          </br>
+        {% endwith %}
+      {% endwith %}
+    {% endfor %}
+  </div>
 {% endblock %}

@@ -25,13 +25,11 @@ def home(request):
 
 @login_required
 def blueprint_view(request):
-    id_number = int(request.get_full_path().split('/')[-1])
-    blueprint = request.user.blueprint_set.filter(pk=id_number)
-    if not blueprint.exists():
-        referer = request.META.get('HTTP_REFERER')
-        if referer != 'http://{}/home'.format(request.get_host()):
-            return redirect(home)
-        blueprint = request.user.blueprint_set.create(name='placeholder')
+    index = int(request.get_full_path().split('/')[-1]) - 1
+    try:
+        blueprint = list(request.user.blueprint_set.all())[index]
+    except IndexError:
+        return redirect(home)
     c = {
         'blueprint': blueprint,
     }
@@ -75,10 +73,8 @@ def login(request):
             auth.login(request, user)
             return redirect(home)
         else:
-            print("The password is valid, but the account has been disabled!")
             return redirect(request.META.get('HTTP_REFERER'))
     else:
-        print("The username and password were incorrect.")
         return redirect(request.META.get('HTTP_REFERER'))
 
 @login_required
@@ -96,5 +92,5 @@ def new_blueprint_view(request):
     referer = request.META.get('HTTP_REFERER')
     if referer != 'http://{}/home'.format(request.get_host()):
         return redirect('home')
-    bps = request.user.blueprint_set.all()
-    return redirect('/blueprint/{}'.format(bps[bps.count()-1].id + 1))
+    request.user.blueprint_set.create(name='placeholder')
+    return redirect('/blueprint/{}'.format(request.user.blueprint_set.all().count()))
