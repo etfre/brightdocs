@@ -11,8 +11,11 @@ import ui
 
 @login_required
 def upload_view(request):
-    context = {
-        'file': request.FILES['file']
-    }
-    
+    blueprint_num = int(request.POST.get('BlueprintNumber'))
+    blueprint = request.user.blueprint_set.all()[blueprint_num - 1]
+    f = request.FILES['file']
+    doc = blueprint.document_set.create(blueprint=blueprint,
+                                        name=f.name,
+                                        extension=f.name,
+                                        doc_file=f)
     return redirect(request.META.get('HTTP_REFERER'))

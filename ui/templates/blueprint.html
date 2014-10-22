@@ -13,4 +13,37 @@
         </form>
       </div>
     </div>
+  	  <div class="row">
+	    <div class="col-md-4 col-md-offset-2">
+	    kjlj
+	    	<ul>
+	    		{% for document in user.document_set.all %}
+	    			<li>{{ document.name }}</li>
+	    		{% endfor %}
+	    	</ul>
+	    </div>
+    </div>
 {% endblock %}
+
+<!-- {% for document in user.document_set.all %}
+	  <div class="row">
+	    <div class="col-md-4 col-md-offset-2">
+	      <a href={{ blueprint_location }}>{{ blueprint.name }}</a>
+	    </div>
+	  </div>
+	  </br>
+    {% endfor %} -->
+
+
+      <!-- <div class="row">
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+       </div>
+      </div> -->

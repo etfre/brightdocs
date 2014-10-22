@@ -8,17 +8,6 @@ from ui.forms import RegisterForm, LoginForm
 from django.contrib.auth.models import User
 from django.contrib import auth
 
-def login_page(request):
-    if request.method == 'GET':
-        form = LoginForm()
-    else:
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            pass
-    return render(request, 'login.html', {
-        'form': form,
-    })
-
 @login_required
 def home(request):
     return render(request, 'home.html')
