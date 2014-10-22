@@ -32,6 +32,7 @@ def blueprint_view(request):
         return redirect(home)
     c = {
         'blueprint': blueprint,
+        'index': index + 1,
     }
     c.update(csrf(request))
     return render(request, "blueprint.html", c)

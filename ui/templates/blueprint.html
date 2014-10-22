@@ -9,6 +9,7 @@
         <form action="/files/upload" method="post" enctype="multipart/form-data">{% csrf_token %}
           <input type="file" name="file" />
           <input type="submit" name="submit" value="Upload" />
+          <input type="hidden" name="BlueprintNumber" value={{ index }}>
         </form>
       </div>
     </div>

@@ -13,12 +13,11 @@ like:
 
 ```IF plaintiff_gender EQUALS "female", THEN plaintiff_he_she BECOMES "she"```
 
-* This trigger would, if the user assigns "female" to the
-`plaintiff_gender` variable, would simply replace all instances of
-`plaintiff_he_she` with "she". In an excel spreadsheet, this applies
-to all cells in rows or columns with an initial cell value of
-`plaintiff_he_she`. In a pdf, it fills in all form fields with that
-name.
+* This trigger, if the user assigns "female" to the `plaintiff_gender`
+variable, would simply replace all instances of `plaintiff_he_she` with
+"she". In an excel spreadsheet, this applies to all cells in rows or
+columns with an initial cell value of `plaintiff_he_she`. In a pdf, it
+fills in all form fields with that name.
 
 * User clicks a big shiny `Run Blueprint` button. He/she fills in
 whichever variables he/she chooses, then clicks an even bigger and
